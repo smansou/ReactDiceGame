@@ -1,0 +1,56 @@
+.play-area{
+    height:100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.player1{
+    width: 50%;
+    background-color: yellow;
+}
+.player2{
+    width: 50%;
+    background-color: yellow;
+}
+
+.dice-container{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.button-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.turn-score{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.rollBtn{
+    width: 90px;
+}
+.holdBtn{
+    width: 45px;
+    transform: translateX(50%);
+}
+
+.middle-container{
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    
+}
+.turn-and-btns{
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
