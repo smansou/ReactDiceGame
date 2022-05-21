@@ -1,50 +1,97 @@
+
+button{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    border: 3px solid white;
+    border-radius: 45px;
+
+}
+
 .play-area{
     height:100%;
     display: flex;
     justify-content: space-between;
+   background-color: rgba(204, 203, 203, 0.454);
+   box-shadow: 0px 5px 40px #0000006c;
+   border-radius: 6px;
 
+     
+/* h-offset v-offset blur spread color */
 }
+
 
 .player1{
     width: 50%;
-    background-color: yellow;
-}
-.player2{
-    width: 50%;
-    background-color: yellow;
+    background-color: rgba(255, 255, 255, 0.753);
+    /* opacity: 70%; */
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+
 }
 
-.dice-container{
+.player2{
     width: 50%;
+    background-color: rgba(255, 255, 255, 0.753);
+    /* opacity: 50%; */
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+   
+}
+
+.overlay{
+    opacity: 50%;
+}
+/* .overlay2{
+    opacity: 100%;
+} */
+
+
+
+.dice-container{
+    z-index: 3;
+    /* width: 50%; */
     display: flex;
     flex-direction: column;
 }
 .button-container{
+    height: 6vw;
     width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 .turn-score{
+    z-index: 3;
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
 .rollBtn{
-    width: 90px;
+    z-index: 3;
+    width: 9vw;
+    height: 2.4vw;
+    
 }
 .holdBtn{
-    width: 45px;
+    z-index: 3;
+    width: 4.5vw;
+    height: 2.4vw;
     transform: translateX(50%);
 }
 
 .middle-container{
-  
+  width: 0%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    
+    background-color: transparent; 
 }
 .turn-and-btns{
     height: 30%;
@@ -53,4 +100,7 @@
     align-items: center;
     justify-content: space-between;
 }
+
+
+
 

@@ -15,11 +15,15 @@ class RollArea extends React.Component {
             die1: "four",
             die2: "three",
             turnScore: 0,
+            namePL1: "PLAYER 1",
+            namePL2: "PLAYER 2",
             totalScorePL1: 0,
             totalScorePL2: 0,
             rolling: true,
             turn: 1,
-            winner: null
+            winner: null,
+            overlayPL1: null,
+            overlayPL2: 'overlay',
         }
     }
 
@@ -55,7 +59,10 @@ class RollArea extends React.Component {
         totalScorePL2: 0,
         rolling: true,
         turn: 1,
-        winner: null
+        winner: null,
+        overlayPL1: null,
+        overlayPL2: 'overlay',
+       
     })
 
     }
@@ -69,19 +76,38 @@ class RollArea extends React.Component {
         alert("Player 1 wins");
         this.resetState();
     }
+    if(this.state.totalScorePL1==100){
+        alert("Player 1 wins!");
+       this.resetState();
+    } else if(this.state.totalScorePL2==100){
+        alert("Player 2 wins");
+        this.resetState();
     }
+}
 
     handleHoldClick() {
         if (this.state.turn == 1) {
-            this.setState((prev) => ({ totalScorePL1: this.state.totalScorePL1 + prev.turnScore, turn: 2, turnScore: 0 }));
-
+            this.setState((prev) => ({
+                 totalScorePL1: this.state.totalScorePL1 + prev.turnScore,
+                  turn: 2, turnScore: 0 }));
+                  
         } else {
-            this.setState((prev) => ({ totalScorePL2: this.state.totalScorePL2 + prev.turnScore, turn: 1, turnScore: 0 }));
+            this.setState((prev) => ({
+                 totalScorePL2: this.state.totalScorePL2 + prev.turnScore,
+                  turn: 1, turnScore: 0 }));
 
 
         }
         this.setState({rolling:true})
+        this.toggleOverlay();
+       
     }
+    toggleOverlay(){
+        this.state.overlayPL1 == null ? 
+        this.setState({overlayPL1: "overlay" , overlayPL2: null }) :
+        this.setState({overlayPL2: "overlay" , overlayPL1: null })
+    }
+
 
     handleWin(winner){
         alert(`Player ${winner} Won`);
@@ -98,23 +124,25 @@ class RollArea extends React.Component {
 
     render() {
         return (
+           
             <div className='play-area'>
-                <PlayerDash plClass={"player1"} name={'player1'} score={this.state.totalScorePL1} />
+                <PlayerDash overlay={`${this.state.overlayPL1}`} plClass={"player1"} name={this.state.namePL1} score={this.state.totalScorePL1} />
                <div className='middle-container'>
                 <div className='dice-container'>
                     <Die face={this.state.die1} />
                     <Die face={this.state.die2} />
                 </div>
                 <div className='turn-and-btns'>
-                <div className='turn-score'> Turn Score: {this.state.turnScore}</div>
+                <div className='turn-score'> Pot {this.state.turnScore}</div>
                 <div className='button-container'>
                     <button className=' rollBtn' onClick={() => { this.handleRollClick() }} >Roll</button>
                     <button className=' holdBtn' onClick={() => { this.handleHoldClick() }} disabled={this.state.rolling}>Hold</button>
                 </div>
                  </div>
             </div>
-                <PlayerDash plClass={"player2"} name={'player2'} score={this.state.totalScorePL2} />
+                <PlayerDash overlay={`${this.state.overlayPL2}`} plClass={"player2"} name={this.state.namePL2} score={this.state.totalScorePL2} />
             </div>
+          
 
 
         );

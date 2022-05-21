@@ -9,9 +9,12 @@ class PlayerDash extends Component {
     }
     render() {
         return (
-            <div className={`player-info ${this.props.plClass}`}>
+            <div className={`player-info ${this.props.overlay} ${this.props.plClass}`}>
                 <div className='player-name'>{this.props.name}</div>
-                <div className='player-score'>Score {this.props.score}</div>
+                <div className='player-score'>
+                    <p>Score</p> 
+                   <p className='score-num'> {this.props.score}</p>
+                    </div>
             </div>
         );
     }
