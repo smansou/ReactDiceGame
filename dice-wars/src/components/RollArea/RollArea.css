@@ -1,13 +1,13 @@
 
 button{
-    background: none;
-	color: inherit;
+    background: rgba(236, 235, 235, 0.384);
+	color: white;
 	border: none;
 	padding: 0;
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
-    border: 3px solid white;
+    border: 2px solid white;
     border-radius: 45px;
 
 }
@@ -74,14 +74,15 @@ button{
 
 .rollBtn{
     z-index: 3;
-    width: 9vw;
-    height: 2.4vw;
+    width: 140px;
+    min-width: 120px;
+    height: 40px;
     
 }
 .holdBtn{
     z-index: 3;
-    width: 4.5vw;
-    height: 2.4vw;
+    width: 70px;
+    height: 40px;
     transform: translateX(50%);
 }
 

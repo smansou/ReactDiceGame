@@ -29,9 +29,10 @@ class RollArea extends React.Component {
 
 
     handleRollClick() {
+        
         let newDie1 = Math.ceil(Math.random() * this.sides.length);
         let newDie2 = Math.ceil(Math.random() * this.sides.length);
-
+       
         this.setState((prev) => ({
             rolling: false,
             die1: Object.keys(this.sides[newDie1 - 1])[0],
@@ -40,6 +41,7 @@ class RollArea extends React.Component {
                 Object.values(this.sides[newDie1 - 1])[0] +
                      Object.values(this.sides[newDie2 - 1])[0]
             }));
+          
 
             
         if (newDie1 + newDie2 === 12) {
