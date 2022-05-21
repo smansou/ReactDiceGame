@@ -24,6 +24,7 @@ class RollArea extends React.Component {
             winner: null,
             overlayPL1: null,
             overlayPL2: 'overlay',
+            players: this.props.players
         }
     }
 
@@ -88,6 +89,7 @@ class RollArea extends React.Component {
 }
 
     handleHoldClick() {
+        
         if (this.state.turn == 1) {
             this.setState((prev) => ({
                  totalScorePL1: this.state.totalScorePL1 + prev.turnScore,
@@ -100,10 +102,26 @@ class RollArea extends React.Component {
 
 
         }
-        this.setState({rolling:true})
+        this.setState({rolling:true}, ()=>{
+           
+            if(this.state.players==1){
+                setTimeout(()=>{
+                    this.handleRollClick();
+                    this.setState((prev) => ({
+                        totalScorePL2: this.state.totalScorePL2 + prev.turnScore,
+                         turn: 1, turnScore: 0, rolling:true }), this.toggleOverlay());
+                
+            }
+                    ,1500)
+            }
+        })
         this.toggleOverlay();
        
+       
     }
+
+
+
     toggleOverlay(){
         this.state.overlayPL1 == null ? 
         this.setState({overlayPL1: "overlay" , overlayPL2: null }) :
@@ -127,7 +145,7 @@ class RollArea extends React.Component {
     render() {
         return (
            
-            <div className='play-area'>
+            <div className='play-area' style={{display:`${this.props.display}`}}>
                 <PlayerDash overlay={`${this.state.overlayPL1}`} plClass={"player1"} name={this.state.namePL1} score={this.state.totalScorePL1} />
                <div className='middle-container'>
                 <div className='dice-container'>
@@ -135,7 +153,10 @@ class RollArea extends React.Component {
                     <Die face={this.state.die2} />
                 </div>
                 <div className='turn-and-btns'>
-                <div className='turn-score'> Pot {this.state.turnScore}</div>
+                <div className='turn-score'> 
+                <p>POT</p>
+               <p> {this.state.turnScore}</p>
+                </div>
                 <div className='button-container'>
                     <button className=' rollBtn' onClick={() => { this.handleRollClick() }} >Roll</button>
                     <button className=' holdBtn' onClick={() => { this.handleHoldClick() }} disabled={this.state.rolling}>Hold</button>

@@ -15,8 +15,7 @@ class Provider extends Component {
     render() {
         return (
             <>
-    <PlayerDash name={'player1'} score = {this.state.totalPL1} />
-    <PlayerDash name={'player2'} score = {this.state.totalPL2} />
+    {this.props.children}
             </>
         );
     }

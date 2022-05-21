@@ -27,9 +27,9 @@
     border-radius: 8%;
     color: white;
 }
-.player-score>p{
+/* .player-score>p{
     padding: 10px;
-}
+} */
 .score-num{
     font-weight: 300;
     font-size: 3vw;
