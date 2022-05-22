@@ -24,7 +24,7 @@ class RollArea extends React.Component {
             winner: null,
             overlayPL1: null,
             overlayPL2: 'overlay',
-            players: this.props.players
+
         }
     }
 
@@ -72,6 +72,7 @@ class RollArea extends React.Component {
 
 
     componentDidUpdate(){
+        console.log(this.state.players);
         if(this.state.totalScorePL1>100){
              alert("Player 2 wins! Player 1 exceeded 100 points");
             this.resetState();
@@ -104,7 +105,7 @@ class RollArea extends React.Component {
         }
         this.setState({rolling:true}, ()=>{
            
-            if(this.state.players==1){
+            if(this.props.players==1){
                 setTimeout(()=>{
                     this.handleRollClick();
                     this.setState((prev) => ({

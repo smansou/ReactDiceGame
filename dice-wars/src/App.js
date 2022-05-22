@@ -10,8 +10,8 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state={
-      displayLanding: "none",
-      displayMain: "flex",
+      displayLanding: "flex",
+      displayMain: "none",
       players: 1
     }
   }
@@ -35,7 +35,7 @@ initTwoPlayers(){
 
       <div className='landing-page' style={{display: this.state.displayLanding}}>
         
-                <div> Title </div>
+                <div className='title'> DiCe WaRs </div>
                 <div className='landing-btn-container'> 
                     <button onClick={()=>{this.initSingle()}} >SINGLE PLAYER</button>
                     <button onClick={()=>{this.initTwoPlayers()}}>HEAD TO HEAD </button>
